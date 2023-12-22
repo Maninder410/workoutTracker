@@ -18,7 +18,6 @@ const createWorkout = async (req,res)=>{
             message:"Please Fill all the fields",emptyFields
         })
      }
-
     try{
     const workout = await Workout.create({name,load,reps});
     res.status(200).json({
