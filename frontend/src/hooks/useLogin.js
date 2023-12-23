@@ -1,13 +1,23 @@
-import {useState} from "react";
-import { useAuthContext } from "./useAuthContext.js";
+import {useState,useEffect} from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 export const useLogin = ()=>{
     const [error,setError] = useState(null);
     const [isLoading,setIsLoading] = useState(null);
-    const {dispatch} = useAuthContext();
+    // const {dispatch} = useAuthContext();
+    const dispatch = useDispatch();
+
+     useEffect(()=>{
+        const user = JSON.parse(localStorage.getItem('user'));
+        if(user){
+            dispatch({type:'LOGIN',payload:user});
+        }
+        // eslint-disable-next-line
+    },[])
     const login = async (email,password) =>{
         setIsLoading(true);
         setError(null);
+
         const response = await fetch("/api/user/login",{
             method:'POST',
             headers:{

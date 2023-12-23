@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route,Navigate } from 'react-router-dom'
-import { useAuthContext } from './hooks/useAuthContext';
 // pages & components
+import { useSelector } from 'react-redux';
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
 function App() {
-  const {user} = useAuthContext();
+  const {user} = useSelector(state=>state.auth);
 
   return (
-    
+
     <div className="App">
       <BrowserRouter>
         <Navbar />

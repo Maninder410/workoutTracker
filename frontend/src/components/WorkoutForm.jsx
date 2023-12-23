@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 import toast from "react-hot-toast";
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useDispatch,useSelector } from 'react-redux';
 const WorkoutForm = () => {
-    const {dispatch} = useWorkoutsContext();
-    const {user} = useAuthContext();
+    const dispatch = useDispatch();
+    const {user} = useSelector(state=>state.auth);
   const [name, setName] = useState('')
   const [load, setLoad] = useState('')
   const [reps, setReps] = useState('')

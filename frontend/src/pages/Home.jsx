@@ -1,13 +1,12 @@
 import { useEffect} from "react";
 import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
-import { useAuthContext } from "../hooks/useAuthContext";
 // components
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
-
+import { useDispatch ,useSelector} from "react-redux";
 const Home = () => {
-const {workouts,dispatch}=useWorkoutsContext();
-const {user} = useAuthContext();
+const {workouts} = useSelector(state=>state.work);
+const dispatch = useDispatch();
+const {user} = useSelector(state=>state.auth);
   useEffect(() => {
     const fetchWorkouts = async () => {
 

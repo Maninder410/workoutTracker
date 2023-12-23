@@ -1,11 +1,11 @@
-import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import { MdDelete } from "react-icons/md";
 import  formatDistanceToNow  from 'date-fns/formatDistanceToNow';
 import toast from "react-hot-toast";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 const WorkoutDetails = ({ workout }) => {
-  const {user} = useAuthContext();
-  const {dispatch} = useWorkoutsContext();
+  const {user} = useSelector(state=>state.auth);
+  const dispatch = useDispatch();
 const handleClick = async ()=>{
   if(!user){
     return ;

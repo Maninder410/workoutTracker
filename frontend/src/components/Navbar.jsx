@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useSelector } from 'react-redux';
 const Navbar = () => {
   const {logout} = useLogout();
-  const {user} = useAuthContext();
+  const {user} = useSelector(state=>state.auth);
 const handleClick = ()=>{
 logout();
 }

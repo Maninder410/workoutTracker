@@ -1,34 +1,49 @@
-import { createContext, useReducer } from 'react'
+import { createReducer } from '@reduxjs/toolkit'
 
-export const WorkoutsContext = createContext()
+export const workoutsReducer = createReducer({
+  workouts:[]
+},{
+  'SET_WORKOUTS':(state,action)=>{
+    state.workouts = action.payload
+  },
+  'CREATE_WORKOUT':(state,action)=>{
+    state.workouts = [action.payload,...state.workouts]
+  },
+   'DELETE_WORKOUT':(state,action)=>{
+    state.workouts=state.workouts.filter((w)=>w._id !== action.payload._id)
 
-export const workoutsReducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_WORKOUTS':
-      return { 
-        workouts: action.payload 
-      }
-    case 'CREATE_WORKOUT':
-      return { 
-        workouts: [action.payload, ...state.workouts] 
-      }
-      case 'DELETE_WORKOUT':
-        return {
-        workouts: state.workouts.filter((w)=>w._id !== action.payload._id)
-        }
-    default:
-      return state
-  }
-}
+   }
 
-export const WorkoutsContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(workoutsReducer, { 
-    workouts: []
-  })
+})
+// export const WorkoutsContext = createContext()
+
+// export const workoutsReducer = (state, action) => {
+//   switch (action.type) {
+//     case 'SET_WORKOUTS':
+//       return { 
+//         workouts: action.payload 
+//       }
+//     case 'CREATE_WORKOUT':
+//       return { 
+//         workouts: [action.payload, ...state.workouts] 
+//       }
+//       case 'DELETE_WORKOUT':
+//         return {
+//         workouts: state.workouts.filter((w)=>w._id !== action.payload._id)
+//         }
+//     default:
+//       return state
+//   }
+// }
+
+// export const WorkoutsContextProvider = ({ children }) => {
+//   const [state, dispatch] = useReducer(workoutsReducer, { 
+//     workouts: []
+//   })
   
-  return (
-    <WorkoutsContext.Provider value={{ ...state, dispatch }}>
-      { children }
-    </WorkoutsContext.Provider>
-  )
-}
+  // return (
+  //   <WorkoutsContext.Provider value={{ ...state, dispatch }}>
+  //     { children }
+  //   </WorkoutsContext.Provider>
+  // )
+// }

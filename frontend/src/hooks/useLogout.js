@@ -1,14 +1,13 @@
-import { useAuthContext } from "./useAuthContext";
-import { useWorkoutsContext } from "./useWorkoutsContext";
+
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 export const useLogout = ()=>{
-const {dispatch} = useAuthContext();
-const {dispatch:workoutsDispatch} = useWorkoutsContext();
+    const dispatch = useDispatch();
 const logout = ()=>{
     //remove user from storage
     localStorage.removeItem('user');
     dispatch({type:'LOGOUT'});
-    workoutsDispatch({type:'SET_WORKOUTS',payload:null})
+    dispatch({type:'SET_WORKOUTS',payload:null})
     toast.success("logout successfully", {
         icon: '👏',
         style: {
