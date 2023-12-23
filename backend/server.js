@@ -4,7 +4,7 @@ const dotenv = require("dotenv");
 const Routes = require("./routes/workouts.js");
 const userRoutes = require("./routes/userRoute.js");
 const mongoose = require("mongoose");
-dotenv.config(); 
+dotenv.config({path:"./secret/.env"}); 
 const app = express();
 app.use(express.json());
 app.use((req,res,next)=>{
