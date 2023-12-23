@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 import toast from "react-hot-toast";
-
+import { useAuthContext } from '../hooks/useAuthContext';
 const WorkoutForm = () => {
     const {dispatch} = useWorkoutsContext();
+    const {user} = useAuthContext();
   const [name, setName] = useState('')
   const [load, setLoad] = useState('')
   const [reps, setReps] = useState('')
@@ -12,14 +13,19 @@ const WorkoutForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    if(!user){
+      setError("You must be logged in");
+      return ;
+    }
     const workout = {name, load, reps}
     
     const response = await fetch('/api/workouts', {
       method: 'POST',
       body: JSON.stringify(workout),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+          'Authorization':`Bearer ${user.token}`
+        
       }
     })
     const json = await response.json()
@@ -29,7 +35,14 @@ const WorkoutForm = () => {
       setEmptyFields(json.emptyFields);
     }
     if (response.ok) {
-      toast.success("Workout Added");
+      toast.success("Workout Added", {
+        icon: '👏',
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      });
       setError(null)
       setEmptyFields([]);
       setName('')

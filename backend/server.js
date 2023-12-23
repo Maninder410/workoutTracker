@@ -2,6 +2,7 @@ const express = require("express");
 //express app
 const dotenv = require("dotenv");
 const Routes = require("./routes/workouts.js");
+const userRoutes = require("./routes/userRoute.js");
 const mongoose = require("mongoose");
 dotenv.config(); 
 const app = express();
@@ -11,6 +12,7 @@ app.use((req,res,next)=>{
     next();
 })
 app.use("/api/workouts",Routes);
+app.use("/api/user",userRoutes);
 mongoose.connect(process.env.MONGO_URI).then((e)=>{
 console.log(`database connected to ${e.connection.host}`);
 app.listen(process.env.PORT,()=>{
