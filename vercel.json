@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "name": "workoutapp",
+  "builds": [{ "src": "/backend/server.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "/(.*)", "dest": "/backend/server.js",
+  "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  "headers": {
+    "Access-Control-Allow-Origin": "*"
+  }
+   }]
+}

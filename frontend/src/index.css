@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
 
 /* layout */
+*{
+  color: #fff;
+
+}
 :root {
   --primary: #1aac83;
   --error: #e7195a;
 }
+
 body {
-  background: #f1f1f1;
   margin: 0;
   font-family: "Poppins";
+  background-color: rgb(26,32,44);
 }
 header {
-  background: #fff;
+  background-color: rgb(26,32,44);
 }
 header .container {
   max-width: 1400px;
@@ -38,32 +43,39 @@ header a {
   gap: 100px;
 }
 .workout-details {
-  background: #fff;
+  background-color: #0d2c54;
   border-radius: 4px;
   margin: 20px auto;
   padding: 20px;
   position: relative;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
 }
+input, select, textarea{
+  color: #000;
+}
 .workout-details h4 {
   margin: 0 0 10px 0;
   font-size: 1.2em;
+  color: white;
   color: var(--primary);
 }
 .workout-details p {
   margin: 0;
   font-size: 0.9em;
-  color: #555;
+  color: #fff;
 }
 .workout-details span {
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
+  background-color: #0d2c54 !important;
   padding: 6px;
   border-radius: 50%;
   color: #333;
+}
+.logbtn{
+  background-color: black;
 }
 
 /* new workout form */
@@ -124,7 +136,7 @@ form.signup, form.login {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
-  background: #fff;
+  background-color: rgb(26,32,44);
   border-radius: 4px;
 }
 .workout-details svg{
@@ -136,4 +148,89 @@ form.signup, form.login {
 }
 .workout-details svg:hover{
   color: tomato;
+}
+.divedit{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+path{
+  color: #ffb400;
+}
+
+.workimg{
+  height: 400px;
+  width: 400px;
+  margin-left: 600px;
+  margin-top: -500px;
+  animation: translateYAnimation 4s linear infinite;
+}
+.edit-form {
+  max-width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.somediv a{
+  color: white !important;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-button,
+.cancel-button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.cancel-button {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.edit-button:hover,
+.cancel-button:hover {
+  background-color: #2980b9;
+}
+@keyframes translateYAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(30px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateY(-30px);
+  }
 }

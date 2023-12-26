@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 export const useLogin = ()=>{
     const [error,setError] = useState(null);
     const [isLoading,setIsLoading] = useState(null);
-    // const {dispatch} = useAuthContext();
     const dispatch = useDispatch();
 
      useEffect(()=>{
@@ -29,7 +28,8 @@ export const useLogin = ()=>{
         const json =await response.json();
         if(!response.ok){
             setIsLoading(false);
-            setError(json.error);
+            // setError(json.error);
+            toast.error(json.error);
         }
         if(response.ok){
             setIsLoading(false);

@@ -11,21 +11,21 @@ logout();
     <header>
       <div className="container">
         <Link to="/">
-          <h1>Workout Buddy</h1>
+          <h1>Workout Tracker</h1>
         </Link>
         <nav>
           {
             user && (
               <div>
                 <span>{user.email}</span>
-              <button onClick = {handleClick}>Log Out</button>
+              <button className='logbtn' onClick = {handleClick}>Log Out</button>
             </div>
             )
           }
 
           {
             !user && (
-              <div>
+              <div className='somediv'>
               <Link to="/login">Login</Link>
               <Link to="/signup">Signup</Link>
             </div>

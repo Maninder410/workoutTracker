@@ -19,7 +19,7 @@ export const useSignup = ()=>{
         const json =await response.json();
         if(!response.ok){
             setIsLoading(false);
-            setError(json.error);
+            toast.error(json.error);
         }
         if(response.ok){
             setIsLoading(false);

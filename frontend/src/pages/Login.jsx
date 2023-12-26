@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useLogin } from "../hooks/useLogin"
+import img from "./newimg.png";
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -31,6 +32,7 @@ const Login = () => {
 
       <button disabled={isLoading}>Log in</button>
       {error && <div className="error">{error}</div>}
+      <img className="workimg" src={img} alt="myimg" />
     </form>
   )
 }

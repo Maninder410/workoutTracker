@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useSignup } from "../hooks/useSignup"
+import img from "./newimg.png";
 
 const Signup = () => {
   const [email, setEmail] = useState('')
@@ -30,6 +31,7 @@ const Signup = () => {
 
       <button disabled={isLoading}>Sign up</button>
       {error && <div className="error">{error}</div> }
+      <img src={img} className="workimg" alt="someimg" />
     </form>
   )
 }
